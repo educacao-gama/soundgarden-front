@@ -22,17 +22,17 @@ preencherForm.addEventListener('submit', (event) => {
 
     fetch('https://xp41-soundgarden-api.herokuapp.com/events', {
         "method": "POST",
-        "headers": {"content-type":"application/json"},
+        "headers": { "content-type": "application/json" },
         "body": JSON.stringify(body)
 
-    }).then( response => console.log(response)
-    ).then( () => {
+    }).then(response => console.log(response)
+    ).then(() => {
         alert("Evento criado")
         window.location.replace("admin.html"); // já que um novo evento foi criado, esse novo evento adicionado tem que aparecer na lista dos eventos automaticamente
 
     }
-    ).catch( error => console.error(error))
+    ).catch(error => console.error(error))
 
-    
+
 
 });  
