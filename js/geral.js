@@ -11,12 +11,12 @@ const inputBanner = document.querySelector("#banner");
 // Tratamento de caracteres especiais
 
 const preencherCampos =(dados) => {
-    const{ name, poster, attractions, description, schedule, number_tickets} = dados
+    const{ name, poster, attractions, description, scheduled, number_tickets} = dados
 
     inputNome.value = name;
     inputAtracoes.value = attractions; // implementar tratamento de virgula
     inputDescricao.value = description;
-    inputData.value = schedule; // implementar tratamento da data
+    inputData.value = scheduled; // implementar tratamento da data
     inputLotacao.value = number_tickets;
     inputBanner.value = poster;
 }
