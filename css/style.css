@@ -26,6 +26,39 @@ aside {
     border-color: #C2185B;
 }
 
+.modal-1{
+    position: fixed;
+    padding-top: 100px;
+    left: 30%;
+    display: none;
+    top: 0;
+    width: 550px;
+    z-index: 2000;  
+    animation: animate;
+    animation-duration: 600ms;
+}
+
+.modal-content {
+    align-items: center;
+    background-color: #fefefe;
+    padding: 30px;
+    
+}
+
+.fechar{
+    color: gray;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.inputs {
+    margin-bottom: 20px;
+}
+
+.form-control {
+   width: 260px;
+}
+
 main.login {
     width: 400px;
 }
@@ -47,4 +80,11 @@ footer nav ul{
 
 footer nav ul li  {
     padding: 10px;
+    
 }
+
+@keyframes animate{
+    from{opacity: 1;}
+    from{opacity: 0;}
+}
+
