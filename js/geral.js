@@ -1,4 +1,10 @@
-const SOUND_URL = "https://xp41-soundgarden-api.herokuapp.com";
+const SOUND_URL = 'https://xp41-soundgarden-api.herokuapp.com/events'; //END POINT
+
+const formCadastroEvento = document.querySelector('#cadastro-evento');
+
+formCadastroEvento.addEventListener('submit', async (event) => {  //quando executar o submit, faz essa função
+
+event.preventDefault(); //evitar que a pagina seja recarregada
 
 const inputNome = document.querySelector("#nome");
 const inputAtracoes = document.querySelector("#atracoes");
@@ -7,25 +13,46 @@ const inputData = document.querySelector("#data");
 const inputLotacao = document.querySelector("#lotacao");
 const inputBanner = document.querySelector("#banner");
 
-// QueryString
-// Tratamento de caracteres especiais
+//alert(inputNome.value);
 
-const preencherCampos =(dados) => {
-    const{ name, poster, attractions, description, schedule, number_tickets} = dados
+const fullDateTime = new Date(inputData.value);
 
-    inputNome.value = name;
-    inputAtracoes.value = attractions; // implementar tratamento de virgula
-    inputDescricao.value = description;
-    inputData.value = schedule; // implementar tratamento da data
-    inputLotacao.value = number_tickets;
-    inputBanner.value = poster;
-}
+const novoEventoObj = {
+    "name": inputNome.value,
+    "poster": inputBanner.value,
+    "attractions": inputAtracoes.value.split(","),
+    "description": inputDescricao.value,
+    "scheduled": fullDateTime.toISOString(),
+    "number_tickets": inputLotacao.value
+};
 
-const getEventoPorId = (id) => {
-    fetch(`${SOUND_URL}/events/${id}`)
-    .then((response) => response.json())
-    .then(preencherCampos);
-}
+console.log(novoEventoObj);
+
+
+//convertendo objeto para JSON
+    const novoEventoJSON = JSON.stringify(novoEventoObj); 
+
+
+//conexão com API para cadastrar novo evento
+// salvando resposta na const
+    const resposta = await fetch(SOUND_URL,{ //fetch serve para fazer conexão com API
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: novoEventoJSON
+    }).then((response) => {
+        return response.json();
+    }).then((responseOBJ) => {
+        console.log(responseOBJ);
+    });
+
+});
+
+
+
+
 
 
 
