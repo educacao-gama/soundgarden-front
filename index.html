@@ -8,52 +8,35 @@
     <title>Sound Garden</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./css/modal.css">
+        <script src="./js/index.js" defer></script>
+        <script src="./js/modal.js" defer></script>
 </head>
 
 <body>
-    <header class=" d-flex justify-content-center align-items-center">
+    <header id="logo" class=" d-flex justify-content-center align-items-center">
         <img src="img/Sound-logo (1).png" width="300" alt="">
     </header>
     <main>
+
         <section class="full d-flex justify-content-center align-items-center"
             style="background-color: #F8BBD0; color: #fff">
             <div class="text-center">
-                <h1>Adicione um banner maneiro aqui</h1>
+                <div class="banner-principal">
+                    <img src="img/banner-01.jpg" width="600" alt="100">
+                </div>
             </div>
         </section>
-        <section class="full">
+        <section #id="listaEventos" class="full">
             <div class="container text-center">
                 <h2>Próximos eventos</h2>
             </div>
-            <div class="container d-flex justify-content-center align-items-center">
-                <article class="evento card p-5 m-3">
-                    <h2>nome do evento - 05/03/2022</h2>
-                    <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                        dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                        nobis in inventore tenetur asperiores.</p>
-                    <a href="#" class="btn btn-primary">reservar ingresso</a>
-                </article>
-                <article class="evento card p-5 m-3">
-                    <h2>nome do evento - 05/03/2022</h2>
-                    <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                        dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                        nobis in inventore tenetur asperiores.</p>
-                    <a href="#" class="btn btn-primary">reservar ingresso</a>
-                </article>
-                <article class="evento card p-5 m-3">
-                    <h2>nome do evento - 05/03/2022</h2>
-                    <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                        dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                        nobis in inventore tenetur asperiores.</p>
-                    <a href="#" class="btn btn-primary">reservar ingresso</a>
-                </article>
+            <div id="eventos" class="container d-flex justify-content-center align-items-center flex-wrap">
+
             </div>
             <div class="container text-center">
-                <a href="eventos.html" class="btn btn-secondary">ver todos os eventos</a>
+                <a href="./eventos.html" id="botao-ver-todos" class="btn btn-secondary">ver todos os eventos</a>
             </div>
         </section>
         <section class="full d-flex justify-content-center align-items-center"
@@ -80,30 +63,60 @@
                             quas incidunt, aliquid explicabo nesciunt hic nobis libero velit at reiciendis.</p>
                     </div>
                     <div class="col">
-                        <img src="img/music.svg" width="500px">
+                        <img id="desaparece" src="img/music.svg" width="100%">
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- modal -->
+        <div id="formulario">
+            <div id="modal">
+                <div class="modal-header">
+                    <h5 id="titulo-modal" class="modal-title">Reserve seu ingresso para </h5>
+                    <button id="btn-x" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form id="form">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name">
+
+                    <label for="email"> E-mail</label>
+                    <input type="email" class="form-control" id="email">
+
+                    <label id="tickets" for="ingresso">Tickets restantes: </label>
+                    <input type="number" class="form-control" value=1 min="1" max="999" id="ingresso">
+
+                    <input type="hidden" name="id" id="inputId">
+                    <button type="button" id="btn-fechar" class="btn btn-secondary botao-modal ">Fechar</button>
+                    <button type="submit" class="btn btn-primary botao-modal ">Reservar ingresso</button>
+
+                </form>
+            </div>
+        </div>
+
     </main>
     <footer>
-        <div class="container d-flex justify-content-center align-items-center">
+        <div id="footeeer" class="container d-flex justify-content-center align-items-center">
             <a href="#">
                 <img src="img/Sound-logo-black (1).png" width="200px" alt="">
             </a>
             <nav>
-                <ul>
+                <ul class="nav-footer">
                     <li>
-                        <a href="eventos.html">eventos</a>
+                        <a href="./eventos.html" class="btn btn-primary">eventos</a>
                     </li>
                     <li>
-                        <a href="admin.html">painel administrativo</a>
+                        <a href="./admin.html" class="btn btn-primary">painel administrativo</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

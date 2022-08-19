@@ -1,0 +1,46 @@
+#modal {
+    background-color: #fff;
+    display: none;
+    flex-direction: column;
+    width: 550px;
+    border: 4px solid #c2185b;
+    border-radius: 14px;
+    padding: 10px;
+  }
+  #btn-fechar {
+    width: 150px;
+  }
+  #formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .form-control {
+    margin: 20px;
+    width: 500px;
+  }
+  #ingresso {
+    width: 100px;
+  }
+  .botao-modal {
+    margin: 0px 5px;
+  }
+  .botao-modal:hover {
+    background-color: rgb(71, 85, 207);
+  }
+  @media screen and (max-width: 540px) {
+    #modal {
+      width: 300px;
+    }
+    .form-control {
+      width: 200px;
+    }
+    #btn-fechar {
+      margin-bottom: 10px;
+      width: 200px;
+    }
+  }
