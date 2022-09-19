@@ -1,4 +1,4 @@
-const getEvent = document.querySelector("container d-flex justify-content-center align-items-center flex-wrap");
+const getEvent = document.querySelector(".container d-flex justify-content-center align-items-center flex-wrap");
 
 async function viewEvent() {
     try{
@@ -6,14 +6,17 @@ async function viewEvent() {
         
         const data = await response.json()
 
-        data.forEach((element) => {
+        data.forEach((article) => {
             const cardEv = `<article class="evento card p-5 m-3">
-            <h2> ${element.name} - 05/03/2022
+            <h2> 
+            ${article.name} + " - " + ${article.scheduled}
             </h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                nobis in inventore tenetur asperiores.</p>
+            <h4>
+            ${article.attractions}
+            </h4>
+            <p>
+            ${article.description}
+            </p>
             <a href="#" class="btn btn-primary">reservar ingresso</a>
         </article>`
 
