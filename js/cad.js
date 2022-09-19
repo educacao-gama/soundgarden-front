@@ -3,7 +3,10 @@
 async function cadEvent(name){
     try{
         const response = await fetch("https://xp41-soundgarden-api.herokuapp.com/events", {
-            method: "POST"
+            method: "POST",
+            Headers: { 
+                "Content-Type": "application/json",
+            }
         });
         const data = await response.json();
        
