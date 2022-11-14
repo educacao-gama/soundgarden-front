@@ -12,7 +12,7 @@ async function getEvent() {
     let evento = eventos[i];
     const cardEvento = `
     <article class="evento card p-5 m-3">
-        <h2>${evento.name} + ${evento.scheduled.slice(0, 10).split('-').join('/')}</h2>
+        <h2>${evento.name} ${evento.scheduled.slice(0, 10).split('-').join('/')}</h2>
         <h4>${evento.attractions}</h4>
         <p>${evento.description}</p>
         <a href="#" class="btn btn-primary">reservar ingresso</a>
