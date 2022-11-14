@@ -15,14 +15,14 @@ eventsList.then(events => {
     const formattedDate = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear(); 
     const rowEvent = `
     <article class="evento card p-5 m-3">
-        <h2>nome do evento - 05/03/2022</h2>
-        <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
+        <h2>${event.name} - ${formattedDate}</h2>
+        <h4>${event.attractions}</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
             dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
             nobis in inventore tenetur asperiores.</p>
         <a href="#" class="btn btn-primary">reservar ingresso</a>
     </article>
     `;
-    table.innerHTML += rowEvent;
+    container.innerHTML += rowEvent;
   });
 });

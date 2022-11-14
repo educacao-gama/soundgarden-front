@@ -23,14 +23,22 @@ form.addEventListener('submit', event => {
   const scheduled = event.target.scheduled.value;
   const tickets = event.target.tickets.value;
 
+  const dataList = scheduled.split('/');
+  const day = dataList[0];
+  const month = dataList[1];
+  const yearHour = dataList[2];
+  const date = month + '/' + day + '/' + yearHour;
+
   const formData = {
     name,
     attractions: attractions.split(','),
     description,
-    scheduled: new Date(scheduled).toISOString(),
+    scheduled: new Date(date).toISOString(),
     number_tickets: parseInt(tickets),
     poster: '#'
   };
 
-  postEvent(formData).then(event => console.log(event));
+  postEvent(formData).then(event => {
+    window.location.href = '/admin.html';
+  });
 });

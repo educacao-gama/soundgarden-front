@@ -10,6 +10,7 @@ async function getEvents() {
 
 const eventsList = getEvents();
 eventsList.then(events => {
+  console.log(events);
 
   events.forEach((event, index) => {
     const date = new Date(event.scheduled);
@@ -27,7 +28,7 @@ eventsList.then(events => {
         <a href="editar.html" class="btn btn-secondary">
           editar
         </a>
-        <a href="editar.html" class="btn btn-danger">
+        <a href="excluir-evento.html?id=${event._id}" class="btn btn-danger">
           excluir
         </a>
       </td>
