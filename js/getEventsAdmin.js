@@ -25,7 +25,7 @@ eventsList.then(events => {
         <a href="reservas.html" class="btn btn-dark">
           ver reservas
         </a>
-        <a href="editar.html" class="btn btn-secondary">
+        <a href="editar-evento.html?id=${event._id}" class="btn btn-secondary">
           editar
         </a>
         <a href="excluir-evento.html?id=${event._id}" class="btn btn-danger">
