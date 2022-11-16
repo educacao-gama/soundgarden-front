@@ -1,34 +1,29 @@
-const container = document.getElementById('articleContainer');
+// A Fazer:
+// Opcional - função para banner rotativo de eventos
 
-async function getEvents() {
-  try {
-    const response = await fetch(
-      'https://xp41-soundgarden-api.herokuapp.com/events'
-    );
-    const events = await response.json();
-    return events;
-  } catch(error){
-    console.log(error);
-  }
+const eventDiv = document.querySelector("#event-list");
 
-}
+async function getEvent() {
+  const response = await fetch(
+    `https://xp41-soundgarden-api.herokuapp.com/events`);
 
-getEvents().then(events => {
-  const threeEvents = events.slice(0, 3);
+  let events = await response.json();
 
-  threeEvents.forEach(event => {
+  for (let i = 0; i < 3; i++){
+    let event = events[i];
     const date = new Date(event.scheduled);
-    const formattedDate =
-      date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    const formattedDate = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear(); 
 
-      articleContainer.innerHTML += `
-      <article class="evento card p-5 m-3">
+    const cardEvento = `
+    <article class="evento card p-5 m-3">
         <h2>${event.name} - ${formattedDate}</h2>
         <h4>${event.attractions}</h4>
         <p>${event.description}</p>
         <a href="#" class="btn btn-primary">reservar ingresso</a>
-      </article>
-    `;
-   });
-});
+    </article>            `;
 
+    eventDiv.innerHTML += cardEvento;
+    };
+};
+
+getEvent();
