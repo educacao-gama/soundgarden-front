@@ -6,7 +6,7 @@ const form = document.getElementById('form');
 form.addEventListener('submit', event => {
   event.preventDefault();
   deleteEvent(id).then(() => {
-    window.location.href = '/admin.html';
+    window.location.href = './admin.html';
   });
 });
 

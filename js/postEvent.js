@@ -39,6 +39,6 @@ form.addEventListener('submit', event => {
   };
 
   postEvent(formData).then(event => {
-    window.location.href = '/admin.html';
+    window.location.href = './admin.html';
   });
 });

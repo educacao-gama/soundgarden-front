@@ -48,3 +48,23 @@ footer nav ul{
 footer nav ul li  {
     padding: 10px;
 }
+
+
+.botao {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+
+.btn1 {
+    padding: 0 6px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+
+
