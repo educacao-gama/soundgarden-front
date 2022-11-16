@@ -25,7 +25,7 @@ eventsList.then(events => {
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
             dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
             nobis in inventore tenetur asperiores.</p>
-        <a href="#" class="btn btn-primary">reservar ingresso</a>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#cadUsuarioModal">reservar ingresso</a>
     </article>
     `;
     container.innerHTML += rowEvent;
