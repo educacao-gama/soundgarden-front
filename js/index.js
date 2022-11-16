@@ -27,6 +27,23 @@ getEvent();
 
 
 // TESTE
+/*
+Pseudocódigo:
+
+getEvents();
+1) no final de index.html, quando a página é carregada, a função getEvent() dentro de index.js é chamada
+2) getEvent requisita à API informações que são então estocadas dentro da constante "events"
+3) for loop de 3 iterações modifica o DOM, alterando o HTML
+4) encerramento da 
+
+Modal:
+1) Ao se clicar no evento, surge um modal com um formulário
+2) Requisição de nome e e-mail com validação no frontend ok
+3) Pergunta: como chamar uma nova requisição de API com base no ID do evento? Onde ele poderia ficar estocado?
+
+
+Código abaixo é cópia de postEvents.js
+*/
 
 const form = document.getElementById('form');
 
