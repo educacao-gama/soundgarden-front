@@ -48,3 +48,7 @@ footer nav ul{
 footer nav ul li  {
     padding: 10px;
 }
+
+.center {
+    text-align: center;
+}

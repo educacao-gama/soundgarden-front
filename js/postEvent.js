@@ -1,18 +1,23 @@
 const form = document.getElementById('form');
 
 async function postEvent(formData) {
-  const response = await fetch(
-    'https://xp41-soundgarden-api.herokuapp.com/events',
-    {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
+  try {
+    const response = await fetch(
+      'https://xp41-soundgarden-api.herokuapp.com/events',
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
-    }
-  );
-  const event = await response.json();
-  return event;
+    );
+    const event = await response.json();
+    return event;
+  } catch(error){
+    console.log(error);
+  }
+ 
 }
 
 form.addEventListener('submit', event => {
