@@ -11,11 +11,16 @@ form.addEventListener('submit', event => {
 });
 
 async function getEvent(id) {
-  const response = await fetch(
-    `https://xp41-soundgarden-api.herokuapp.com/events/${id}`
-  );
-  const events = await response.json();
-  return events;
+  try {
+    const response = await fetch(
+      `https://xp41-soundgarden-api.herokuapp.com/events/${id}`
+    );
+    const events = await response.json();
+    return events;
+  } catch(error){
+    console.log(error);
+  }
+
 }
 
 async function deleteEvent(id) {
