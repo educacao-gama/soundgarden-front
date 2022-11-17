@@ -4,11 +4,16 @@ const id = params.get('id');
 const form = document.getElementById('form');
 
 async function getEvent(id, formData) {
-  const response = await fetch(
-    `https://xp41-soundgarden-api.herokuapp.com/events/${id}`
-  );
-  const events = await response.json();
-  return events;
+  try {
+    const response = await fetch(
+      `https://xp41-soundgarden-api.herokuapp.com/events/${id}`
+    );
+    const events = await response.json();
+    return events;
+  } catch(error){
+    console.log(error);
+  }
+
 }
 
 async function editEvent(id, formData) {

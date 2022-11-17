@@ -1,11 +1,15 @@
 const table = document.getElementById('eventsTable');
 
 async function getEvents() {
-  const response = await fetch(
-    'https://xp41-soundgarden-api.herokuapp.com/events'
-  );
-  const events = await response.json();
-  return events;
+  try {
+    const response = await fetch(
+      'https://xp41-soundgarden-api.herokuapp.com/events'
+    );
+    const events = await response.json();
+    return events;
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 const eventsList = getEvents();

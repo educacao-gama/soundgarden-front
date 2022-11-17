@@ -1,22 +1,28 @@
 const form = document.getElementById('form');
 
 async function postEvent(formData) {
-  const response = await fetch(
-    'https://xp41-soundgarden-api.herokuapp.com/events',
-    {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: {
-        'Content-Type': 'application/json'
+  try {
+    const response = await fetch(
+      'https://xp41-soundgarden-api.herokuapp.com/events',
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
-    }
-  );
-  const event = await response.json();
-  return event;
+    );
+    const event = await response.json();
+    return event;
+  } catch(error){
+    console.log(error);
+  }
+ 
 }
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+
   const name = event.target.name.value;
   const attractions = event.target.attractions.value;
   const description = event.target.description.value;
@@ -38,7 +44,7 @@ form.addEventListener('submit', event => {
     poster: '#'
   };
 
-  postEvent(formData).then(event => {
+  postEvent(formData).then(() => {
     window.location.href = './admin.html';
   });
 });
