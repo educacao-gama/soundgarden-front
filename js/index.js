@@ -18,7 +18,8 @@ async function getEvent() {
         <h4>${event.attractions}</h4>
         <p>${event.description}</p>
         <a href="#" data-event-id=${event._id} class="btn btn-primary" data-toggle="modal" data-target="#cadUsuarioModal">reservar ingresso</a>
-    </article>            `;
+    </article>            
+    `;
 
     eventDiv.innerHTML += cardEvento;
     };
