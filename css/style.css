@@ -52,3 +52,7 @@ footer nav ul li  {
 .center {
     text-align: center;
 }
+
+.hidden {
+    visibility: hidden;
+}

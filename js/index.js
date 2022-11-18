@@ -1,6 +1,6 @@
-const eventDiv = document.querySelector("#event-list"); // seletor das divs dos cards
-const reservaId = document.querySelector('.reserva'); // seletor da classe reserva no <a> (ver linha 20)
-const modalForm = document.querySelector('form'); // seletor do form do modal
+const eventDiv = document.querySelector("#event-list"); 
+const modalForm = document.querySelector('form');
+const modalId = document.querySelector('#event-id')
 
 async function getEvent() {
   const response = await fetch(
@@ -10,22 +10,32 @@ async function getEvent() {
 
   for (let i = 0; i < 3; i++) {
     let event = events[i];
-    const date = new Date(event.scheduled).toLocaleDateString();
+    const date = new Date(event.scheduled).toLocaleDateString(); 
 
     const cardEvento = `
     <article class="evento card p-5 m-3">
         <h2>${event.name} - ${date}</h2>
         <h4>${event.attractions}</h4>
         <p>${event.description}</p>
-        <a href="#" id=${event._id} class="btn btn-primary reserva" data-toggle="modal" data-target="#cadUsuarioModal">reservar ingresso</a>
+        <a href="#" data-event-id=${event._id} class="btn btn-primary" data-toggle="modal" data-target="#cadUsuarioModal">reservar ingresso</a>
     </article>            `;
 
     eventDiv.innerHTML += cardEvento;
     };
 };
-// até aqui, o mesmo código de antes
-// ---
-// função async que vai receber a formdata abaixo
+
+getEvent()
+
+// https://getbootstrap.com/docs/3.3/javascript/#modals
+$('#cadUsuarioModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  var recipient = button.data('event-id') 
+  var modal = $(this)
+  modal.find('#eventid').val(recipient)
+});
+
+// enviar formulario
+
 async function postModal(formData) {
   try {
     const response = await fetch(
@@ -45,31 +55,21 @@ async function postModal(formData) {
   }
 }
 
-// Tentativa de fazer uma função onde, ao <a> ser clicado, ele guardasse o valor de Id numa variável
-let modalId = function reservaClique {
-  let reserva = document.querySelector('.reserva');
-
-  }
-
-// cópia modificada de postEvent
 modalForm.addEventListener('submit', event => {
   event.preventDefault();
-  const owner_name = event.target.owner_name.value;
-  const owner_email = event.target.owner_email.value;
+  const owner_name = event.target.name.value;
+  const owner_email = event.target.email.value;
   const number_tickets = 1;
-  const event_id = ; // aqui é o X da questão, como por a Id aí?
+  const event_id = event.target.eventid.value;
 
   const formData = {
     owner_name,
     owner_email,
     number_tickets,
-    event_id:
+    event_id
   };
 
   postModal(formData).then(event => {
-    window.location.href = '/'; // talvez não seja necessário essas linhas de código no final, já que o modal fecha sozinho em tese
+    alert(`Você fez ${number_tickets} reserva!`);
   });
 });
-
-
-getEvent();
