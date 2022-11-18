@@ -13,6 +13,7 @@ header {
     width: 100%;
     background-color: #fff;
 }
+
 aside {
     min-height: 100vh;
 }
@@ -49,6 +50,8 @@ footer nav ul li  {
     padding: 10px;
 }
 
-.center {
-    text-align: center;
+.d-block {
+    width: 1024px;
+    height: 720px;
+    object-fit: contain;
 }
