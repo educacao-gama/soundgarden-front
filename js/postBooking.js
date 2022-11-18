@@ -30,10 +30,10 @@ form.addEventListener('submit', event => {
     owner_name: name,
     owner_email: email,
     number_tickets: 3,
-    event_id: "63762a9385122eed6298170a"
+    event_id: "6377278185122eed62984aa9"
   };
 
   postBooking(formData).then(() => {
-    window.location.href = './bookings.html';
+    window.location.href = './index.html';
   });
 });
