@@ -25,8 +25,8 @@ eventsList.then(events => {
       <td>${formattedDate}</td>
       <td>${event.name}</td>
       <td>${event.attractions}</td>
-      <td>
-        <a href="reservas.html" class="btn btn-dark">
+      <td class="botao">
+        <a href="bookings.html" class="btn btn-dark">
           ver reservas
         </a>
         <a href="editar-evento.html?id=${event._id}" class="btn btn-secondary">

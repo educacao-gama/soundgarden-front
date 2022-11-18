@@ -50,14 +50,19 @@ footer nav ul li  {
     padding: 10px;
 }
 
+.botao {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
 .d-block {
     width: 1024px;
     height: 720px;
     object-fit: contain;
-}
-
-.hidden {
-    visibility: hidden;
 }
 
 .hidden {

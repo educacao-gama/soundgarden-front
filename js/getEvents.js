@@ -16,6 +16,7 @@ async function getEvents() {
 const eventsList = getEvents();
 eventsList.then(events => {
   events.forEach((event, index) => {
+
     const date = new Date(event.scheduled);
     const formattedDate = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear(); 
     const rowEvent = `

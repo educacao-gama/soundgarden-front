@@ -22,6 +22,7 @@ async function postEvent(formData) {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+
   const name = event.target.name.value;
   const attractions = event.target.attractions.value;
   const description = event.target.description.value;
@@ -43,7 +44,7 @@ form.addEventListener('submit', event => {
     poster: '#'
   };
 
-  postEvent(formData).then(event => {
-    window.location.href = '/admin.html';
+  postEvent(formData).then(() => {
+    window.location.href = './admin.html';
   });
 });

@@ -81,6 +81,6 @@ form.addEventListener('submit', event => {
   };
 
   editEvent(id, formData).then(event => {
-    window.location.href = '/admin.html';
+    window.location.href = './admin.html';
   });
 });
