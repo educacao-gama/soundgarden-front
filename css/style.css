@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-body{
+
+body {
     font-family: 'Questrial', sans-serif;
 }
 
@@ -7,21 +8,32 @@ body{
     max-width: 100%;
 }
 
-header {
-    position: relative;
-    box-shadow: 0px 5px 4px 0px rgb(63 63 63 / 27%);
-    width: 100%;
-    background-color: #fff;
+.hide {
+    display: none !important;
 }
+
+header {
+    background-color: #fff;
+    box-shadow: 0px 5px 4px 0px rgba(63, 63, 63, 27%);
+    position: relative;
+    width: 100%;
+}
+
+#index header {
+    box-shadow: 0px 5px 4px 0px rgba(63, 63, 63, 50%);
+    z-index: 2;
+}
+
 aside {
     min-height: 100vh;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     background-color: #C2185B;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #C2185B;
     border-color: #C2185B;
 }
@@ -30,21 +42,37 @@ main.login {
     width: 400px;
 }
 
-section.full{
-    width: 100%;
+section.full {
     min-height: 80vh;
     padding: 50px 0;
+    width: 100%;
+}
+
+#event-carousel-section {
+    box-shadow: inset 0px 5px 4px 0px rgb(63 63 63 / 60%);
+    padding-top: 0;
+}
+
+.carousel-item {
+    background-color: #000;
+}
+
+.carousel-img {
+    height: calc(100vh - 159px);
+    object-fit: cover;
+    opacity: 0.5;
+    width: 100vw;
 }
 
 article.evento {
     width: 350px;
 }
 
-footer nav ul{
-    list-style: none;
+footer nav ul {
     display: flex;
+    list-style: none;
 }
 
-footer nav ul li  {
+footer nav ul li {
     padding: 10px;
 }

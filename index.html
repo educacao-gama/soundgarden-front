@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -11,49 +11,42 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="index">
     <header class=" d-flex justify-content-center align-items-center">
         <img src="img/Sound-logo (1).png" width="300" alt="">
     </header>
     <main>
-        <section class="full d-flex justify-content-center align-items-center"
-            style="background-color: #F8BBD0; color: #fff">
-            <div class="text-center">
-                <h1>Adicione um banner maneiro aqui</h1>
+        <section id="event-carousel-section" class="full d-flex justify-content-center align-items-center">
+            <div class="position-absolute top-50 start-50 translate-middle" data-carousel-loader>
+                <div class="spinner-border text-danger m-5" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
+            <div id="event-carousel" class="carousel slide" data-bs-ride="carousel" data-event-carousel>
+                <div class="carousel-inner">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#event-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#event-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
             </div>
         </section>
-        <section class="full">
+        <section class="full position-relative" data-event-section>
+            <div class="position-absolute top-50 start-50 translate-middle" data-event-loader>
+                <div class="spinner-border text-danger m-5" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
             <div class="container text-center">
                 <h2>Próximos eventos</h2>
             </div>
-            <div class="container d-flex justify-content-center align-items-center">
-                <article class="evento card p-5 m-3">
-                    <h2>nome do evento - 05/03/2022</h2>
-                    <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                        dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                        nobis in inventore tenetur asperiores.</p>
-                    <a href="#" class="btn btn-primary">reservar ingresso</a>
-                </article>
-                <article class="evento card p-5 m-3">
-                    <h2>nome do evento - 05/03/2022</h2>
-                    <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                        dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                        nobis in inventore tenetur asperiores.</p>
-                    <a href="#" class="btn btn-primary">reservar ingresso</a>
-                </article>
-                <article class="evento card p-5 m-3">
-                    <h2>nome do evento - 05/03/2022</h2>
-                    <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aperiam sunt quo similique,
-                        dolorum consectetur inventore ipsam, officiis neque natus eius harum alias quidem. Possimus
-                        nobis in inventore tenetur asperiores.</p>
-                    <a href="#" class="btn btn-primary">reservar ingresso</a>
-                </article>
-            </div>
-            <div class="container text-center">
-                <a href="eventos.html" class="btn btn-secondary">ver todos os eventos</a>
+            <div class="container d-flex justify-content-center align-items-stretch" data-event>
             </div>
         </section>
         <section class="full d-flex justify-content-center align-items-center"
@@ -80,7 +73,7 @@
                             quas incidunt, aliquid explicabo nesciunt hic nobis libero velit at reiciendis.</p>
                     </div>
                     <div class="col">
-                        <img src="img/music.svg" width="500px">
+                        <img src="img/music.svg" width="500px" class="img-responsive">
                     </div>
                 </div>
             </div>
@@ -90,7 +83,7 @@
     <footer>
         <div class="container d-flex justify-content-center align-items-center">
             <a href="#">
-                <img src="img/Sound-logo-black (1).png" width="200px" alt="">
+                <img src="img/Sound-logo-black (1).png" width="200px" alt>
             </a>
             <nav>
                 <ul>
@@ -104,6 +97,132 @@
             </nav>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bookTicket" tabindex="-1" aria-labelledby="bookTicketTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookTicketTitle">Reserve seu ingresso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form data-form>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="inputName" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" required
+                                data-name>
+                            <div id="nameHelp" class="form-text">Digite seu primeiro e o últmo nome.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                                required data-email>
+                            <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.
+                            </div>
+                        </div>
+                        <input type="hidden" id="event-id" name="eventId" data-event-id>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Reservar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="bookTicketSucess" tabindex="-1" aria-labelledby="bookTicketTitleSucess"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookTicketTitleSucess">Obrigado!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form data-form>
+                    <div class="modal-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </symbol>
+                            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </symbol>
+                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </symbol>
+                        </svg>
+
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                                <use xlink:href="#check-circle-fill" />
+                            </svg>
+                            <div>
+                                Reserva realizada com sucesso!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="bookTicketFail" tabindex="-1" aria-labelledby="bookTicketTitleFail" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookTicketTitleFail">Obrigado!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form data-form>
+                    <div class="modal-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </symbol>
+                            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                            </symbol>
+                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </symbol>
+                        </svg>
+
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                                <use xlink:href="#exclamation-triangle-fill" />
+                            </svg>
+                            <div>
+                                Ingressos esgotados. Não foi possível realizar a reserva.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./controller/eventsList-controller.js"></script>
+    <script type="module" src="./controller/carouselEvent-controller.js"></script>
+    <script type="module" src="./controller/bookingEvent-controller.js"></script>
 </body>
 
 </html>
