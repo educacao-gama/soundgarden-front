@@ -40,7 +40,6 @@ const eventCarousel = async () => {
         );
 
         for (let i = 0; i < eventsList.length; i++) {
-            console.log(eventsList[i]);
             carouselInner.appendChild(
                 createEventCarouselItem(
                     eventsList[i].name,

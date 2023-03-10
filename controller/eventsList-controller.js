@@ -24,7 +24,6 @@ const renderCards = async (limit) => {
 
     try {
         const eventsList = await eventsService.eventsList();
-        console.log(eventsList);
 
         for (let i = 0; i < eventsList.length; i++) {
             eventsDiv.appendChild(
@@ -63,5 +62,10 @@ const renderCards = async (limit) => {
 
 const getURL = new URL(window.location);
 const pathName = getURL.pathname;
-if (pathName == '/index.html' || pathName == '/') renderCards(true);
+if (
+    pathName == '/index.html' ||
+    pathName == '/' ||
+    pathName == '/soundgarden-front/'
+)
+    renderCards(true);
 if (pathName == '/eventos.html') renderCards(false);
