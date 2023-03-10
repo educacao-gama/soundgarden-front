@@ -60,12 +60,6 @@ const renderCards = async (limit) => {
     }
 };
 
-const getURL = new URL(window.location);
-const pathName = getURL.pathname;
-if (
-    pathName == '/index.html' ||
-    pathName == '/' ||
-    pathName == '/soundgarden-front/'
-)
-    renderCards(true);
-if (pathName == '/eventos.html') renderCards(false);
+export const cards = {
+    renderCards,
+};
