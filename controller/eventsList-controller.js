@@ -3,10 +3,11 @@ import { utils } from '../js/util.js';
 import { error } from '../js/error.js';
 
 const createEventCard = (name, scheduled, attractions, description, id) => {
+    console.log(attractions);
     const cardEvent = document.createElement('article');
     const content = `
         <h2>${name} - ${utils.formatDate(scheduled)}</h2>
-        <h4>${attractions}</h4>
+        <h4>${attractions.join(' · ')}</h4>
         <p>${utils.limitString(description, 100)}</p>
         <button type="button" class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#bookTicket" data-event-id="${id}">
             reservar ingresso

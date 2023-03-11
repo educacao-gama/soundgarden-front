@@ -16,7 +16,7 @@ const createEventCarouselItem = (
     <img src="${poster}" class="d-block carousel-img" alt="${name}">
     <div class="carousel-caption">
         <h4>${name} - ${utils.formatDate(scheduled)}</h4>
-        <h5>${attractions}</h5>
+        <h5>${attractions.join(' · ')}</h5>
         <p>${utils.limitString(description, 100)}</p>
         <button type="button" class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#bookTicket" data-event-id="${id}">
             reservar ingresso
