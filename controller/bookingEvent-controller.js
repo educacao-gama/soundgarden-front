@@ -28,8 +28,8 @@ form.addEventListener('submit', async (event) => {
         const email = event.target.querySelector('[data-email]').value;
         const eventId = event.target.querySelector('[data-event-id]').value;
 
-        if (!name && !email) {
-            return console.log('Erro');
+        if (!name || !email) {
+            return console.log('Nome ou email não preenchidos');
         }
 
         await bookingsServices.bookingEvent(name, email, eventId);
