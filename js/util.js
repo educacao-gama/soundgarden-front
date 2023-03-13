@@ -57,7 +57,6 @@ const limitString = (string = '', limit = 0) =>
     string.length > limit ? `${string.substring(0, limit)}...` : string;
 
 const showElement = (div, hide) => {
-    div.classList.add('visible');
     div.classList.remove('invisible');
     if (hide) {
         div.classList.remove('hide');

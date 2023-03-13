@@ -3,6 +3,9 @@ import { utils } from '../js/util.js';
 import { error } from '../js/error.js';
 
 const deleteEvent = async () => {
+    const form = document.querySelector('[data-form]');
+    utils.hideElement(form, true);
+
     const getURL = new URL(window.location);
     const id = getURL.searchParams.get('id');
 
@@ -14,13 +17,10 @@ const deleteEvent = async () => {
     const inputLotacao = document.getElementById('lotacao');
 
     const errorDiv = document.querySelector('[data-error]');
-    const form = document.querySelector('[data-form]');
-    utils.hideElement(form, true);
 
     try {
-        utils.showElement(form, true);
-
         const data = await eventsService.eventDetail(id);
+
         const dateScheduled = utils.dateToLocal(data.scheduled);
 
         inputNome.value = data.name;
@@ -29,6 +29,8 @@ const deleteEvent = async () => {
         inputDescricao.value = data.description;
         inputData.value = dateScheduled;
         inputLotacao.value = data.number_tickets;
+
+        utils.showElement(form, true);
     } catch (erro) {
         console.log(erro);
         utils.hideElement(form, true);
