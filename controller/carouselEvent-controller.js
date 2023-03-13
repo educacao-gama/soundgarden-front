@@ -1,6 +1,5 @@
 import { eventsService } from '../service/events-services.js';
 import { utils } from '../js/util.js';
-import { error } from '../js/error.js';
 
 const createEventCarouselItem = (
     name,
@@ -40,13 +39,17 @@ const eventCarousel = async () => {
         );
 
         for (let i = 0; i < eventsList.length; i++) {
+            const banner = utils.isValidUrl(eventsList[i].poster)
+                ? eventsList[i].poster
+                : 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80';
+
             carouselInner.appendChild(
                 createEventCarouselItem(
                     eventsList[i].name,
                     eventsList[i].scheduled,
                     eventsList[i].attractions,
                     eventsList[i].description,
-                    eventsList[i].poster,
+                    banner,
                     eventsList[i]._id,
                     i === 0 ? true : false
                 )
