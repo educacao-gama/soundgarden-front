@@ -56,7 +56,7 @@ const eventCarousel = async () => {
             }
         }
     } catch (erro) {
-        const carouselSection = document.querySelector(
+        const carouselSection = document.getElementById(
             'event-carousel-section'
         );
         utils.hideElement(carouselSection, true);

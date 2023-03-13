@@ -12,24 +12,36 @@ bookTicket.addEventListener('show.bs.modal', function (event) {
 const form = document.querySelector('[data-form]');
 
 form.addEventListener('submit', async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const bookTicket = document.getElementById('bookTicket');
-  const modalBookTicket = bootstrap.Modal.getInstance(bookTicket);
-  const bookTicketSucess = document.getElementById('bookTicketSucess');
-  const modalbookTicketSucess =
-    bootstrap.Modal.getOrCreateInstance(bookTicketSucess);
-  const bookTicketFail = document.getElementById('bookTicketFail');
-  const modalbookTicketFail =
-    bootstrap.Modal.getOrCreateInstance(bookTicketFail);
+    const bookTicket = document.getElementById('bookTicket');
+    const modalBookTicket = bootstrap.Modal.getInstance(bookTicket);
 
-  try {
-    const name = event.target.querySelector('[data-name]').value;
-    const email = event.target.querySelector('[data-email]').value;
-    const eventId = event.target.querySelector('[data-event-id]').value;
+    const bookTicketSucess = document.getElementById('bookTicketSucess');
+    const modalbookTicketSucess =
+        bootstrap.Modal.getOrCreateInstance(bookTicketSucess);
 
-    if (!name || !email) {
-      return console.log('Nome ou email não preenchidos');
+    const bookTicketFail = document.getElementById('bookTicketFail');
+    const modalbookTicketFail =
+        bootstrap.Modal.getOrCreateInstance(bookTicketFail);
+
+    try {
+        const name = event.target.querySelector('[data-name]').value;
+        const email = event.target.querySelector('[data-email]').value;
+        const eventId = event.target.querySelector('[data-event-id]').value;
+
+        if (!name || !email) {
+            return console.log('Nome ou email não preenchidos');
+        }
+
+        await bookingsServices.bookingEvent(name, email, eventId);
+
+        modalBookTicket.toggle();
+        modalbookTicketSucess.toggle();
+    } catch (erro) {
+        modalBookTicket.toggle();
+        modalbookTicketFail.toggle();
+        console.log(erro);
     }
 
     await bookingsServices.bookingEvent(name, email, eventId);
