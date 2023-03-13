@@ -18,13 +18,16 @@ const deleteEvent = async () => {
     utils.hideElement(form, true);
 
     try {
-        const data = await eventsService.eventDetail(id);
         utils.showElement(form, true);
+
+        const data = await eventsService.eventDetail(id);
+        const dateScheduled = utils.dateToLocal(data.scheduled);
+
         inputNome.value = data.name;
         inputBanner.value = data.poster;
-        inputAtracoes.value = `${data.attractions.join(' · ')}`;
+        inputAtracoes.value = `${data.attractions.join(', ')}`;
         inputDescricao.value = data.description;
-        inputData.value = `${utils.formatDateHourMinute(data.scheduled)}`;
+        inputData.value = dateScheduled;
         inputLotacao.value = data.number_tickets;
     } catch (erro) {
         console.log(erro);
@@ -33,7 +36,6 @@ const deleteEvent = async () => {
             'Ops! Algo de errado aconteceu. Você pode tentar novamente em alguns minutos.',
             errorDiv
         );
-        window.scrollTo(0, 0);
     } finally {
         const loader = document.querySelector('[data-event-loader]');
         utils.hideElement(loader, true);
