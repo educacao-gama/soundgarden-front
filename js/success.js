@@ -1,4 +1,4 @@
-const showError = (message, append) => {
+const showSuccess = (message, append) => {
     const content = `
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -13,26 +13,30 @@ const showError = (message, append) => {
 </svg>
 
     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning">
-    <use xlink:href="#exclamation-triangle-fill"/>
+    <use xlink:href="#check-circle-fill"/>
     </svg>
     <div>
         ${message}
     </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
 
-    const errorDiv = document.createElement('div');
-    errorDiv.classList.add(
+    const successDiv = document.createElement('div');
+    successDiv.classList.add(
         'alert',
-        'alert-danger',
+        'alert-success',
         'd-flex',
         'align-items-center',
+        'alert-dismissible',
+        'fade',
+        'show',
         'my-5'
     );
-    errorDiv.setAttribute('role', 'alert');
-    errorDiv.innerHTML = content;
-    append.append(errorDiv);
+    successDiv.setAttribute('role', 'alert');
+    successDiv.innerHTML = content;
+    append.append(successDiv);
 };
 
-export const error = {
-    showError,
+export const success = {
+    showSuccess,
 };

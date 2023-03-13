@@ -16,9 +16,11 @@ form.addEventListener('submit', async (event) => {
 
     const bookTicket = document.getElementById('bookTicket');
     const modalBookTicket = bootstrap.Modal.getInstance(bookTicket);
+
     const bookTicketSucess = document.getElementById('bookTicketSucess');
     const modalbookTicketSucess =
         bootstrap.Modal.getOrCreateInstance(bookTicketSucess);
+
     const bookTicketFail = document.getElementById('bookTicketFail');
     const modalbookTicketFail =
         bootstrap.Modal.getOrCreateInstance(bookTicketFail);
@@ -33,6 +35,7 @@ form.addEventListener('submit', async (event) => {
         }
 
         await bookingsServices.bookingEvent(name, email, eventId);
+
         modalBookTicket.toggle();
         modalbookTicketSucess.toggle();
     } catch (erro) {

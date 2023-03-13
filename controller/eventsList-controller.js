@@ -25,7 +25,7 @@ const renderCards = async (limit) => {
 
     try {
         const eventsList = await eventsService.eventsList();
-
+        console.log(eventsList);
         for (let i = 0; i < eventsList.length; i++) {
             eventsDiv.appendChild(
                 createEventCard(
