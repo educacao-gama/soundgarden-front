@@ -1,13 +1,10 @@
 const eventsList = () => {
-    return fetch(`https://soundgarden-api.vercel.app/events`).then(
-        (resposta) => {
-            if (resposta.ok) {
-                console.log();
-                return resposta.json();
-            }
-            throw new Error('Não foi possível listar os eventos');
-        }
-    );
+  return fetch(`https://soundgarden-api.vercel.app/events`).then((resposta) => {
+    if (resposta.ok) {
+      return resposta.json();
+    }
+    throw new Error('Não foi possível listar os eventos');
+  });
 };
 
 const createEvent = (

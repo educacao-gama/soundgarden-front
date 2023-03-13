@@ -3,10 +3,10 @@ import { bookingsServices } from '../service/bookings-services.js';
 const bookTicket = document.getElementById('bookTicket');
 
 bookTicket.addEventListener('show.bs.modal', function (event) {
-    const button = event.relatedTarget;
-    const eventId = button.getAttribute('data-event-id');
-    const eventIdInput = bookTicket.querySelector('[data-event-id]');
-    eventIdInput.value = eventId;
+  const button = event.relatedTarget;
+  const eventId = button.getAttribute('data-event-id');
+  const eventIdInput = bookTicket.querySelector('[data-event-id]');
+  eventIdInput.value = eventId;
 });
 
 const form = document.querySelector('[data-form]');
@@ -43,4 +43,13 @@ form.addEventListener('submit', async (event) => {
         modalbookTicketFail.toggle();
         console.log(erro);
     }
+
+    await bookingsServices.bookingEvent(name, email, eventId);
+    modalBookTicket.toggle();
+    modalbookTicketSucess.toggle();
+  } catch (erro) {
+    modalBookTicket.toggle();
+    modalbookTicketFail.toggle();
+    console.log(erro);
+  }
 });

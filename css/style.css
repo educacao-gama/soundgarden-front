@@ -162,3 +162,11 @@ footer nav ul {
 footer nav ul li {
     padding: 10px;
 }
+
+.admError span {
+    display: block;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.6);
+    border-radius: 6px;
+    color: white;
+}
