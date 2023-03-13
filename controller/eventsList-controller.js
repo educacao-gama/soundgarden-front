@@ -3,7 +3,6 @@ import { utils } from '../js/util.js';
 import { error } from '../js/error.js';
 
 const createEventCard = (name, scheduled, attractions, description, id) => {
-    console.log(attractions);
     const cardEvent = document.createElement('article');
     const content = `
         <h2>${name} - ${utils.formatDate(scheduled)}</h2>
@@ -25,7 +24,7 @@ const renderCards = async (limit) => {
 
     try {
         const eventsList = await eventsService.eventsList();
-        console.log(eventsList);
+
         for (let i = 0; i < eventsList.length; i++) {
             eventsDiv.appendChild(
                 createEventCard(
