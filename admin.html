@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sound Gardens - Painel Administrativo</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -84,7 +83,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="reservas.html" class="btn btn-dark btn-reservas">ver reservas</a>
+                                    <button href="./" class="btn btn-dark btn-reservas verReservas">ver reservas</button>
                                     <a href="editar-evento.html" class="btn btn-secondary btn-editar">editar</a>
                                     <a href="excluir-evento.html" class="btn btn-danger btn-excluir">excluir</a>
                                 </td>
@@ -96,11 +95,53 @@
             </main>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+
+    <div class="reservationsModal" data-activeReserv="false">
+
+        <div class="tableReserv">
+            <button class="reservationsModal-close">
+                <span>X</span>
+            </button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Numero de Ingressos</th>
+                        <th scope="col">Id Da Reserva</th>
+                    </tr>
+                </thead>
+                <tbody data-tableListReserv>
+
+                    <div class="position-absolute top-50 start-50 translate-middle" data-loader2>
+                        <div class="spinner-border text-danger m-5" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                    </div>
+
+                    <tr data-idReserv="" data-cloneReserv style="display: none;">
+                        <th scope="row">1</th>
+                        <td>nome teste 1</td>
+                        <td>emailteste@teste.com</td>
+                        <td>10</td>
+                        <td>640f468048193176dbe29ee9</td>
+                    </tr>
+                    <div class="admErrorReservations" style="display: none;">
+                        <span></span>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+
     <script type="module" src="./controller/eventManeger-controller.js"></script>
     <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./controller/showReservations-controller.js"></script>
 </body>
 
 </html>
