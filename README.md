@@ -20,5 +20,5 @@ Baixe os arquivo ou clone e abra o arquivo `index.html` em um anvegador. Você p
 
 -   [Felipe Sanches](https://github.com/FelipeSanchesMartinez)
 -   [Patrick Andrade](https://github.com/DevPatriick)
--   [Raimundo Neto](https://github.com/r-f-s-neto/DinDin)
+-   [Raimundo Neto](https://github.com/r-f-s-neto/)
 -   [Rodrigo Bruno](https://github.com/rodrigobruno/)
