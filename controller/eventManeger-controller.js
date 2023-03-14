@@ -46,6 +46,11 @@ listManager().then((eventsList) => {
       newClone.children[1].innerText = newInitialDate2;
       newClone.children[2].innerText = eventsList[index].name;
       newClone.children[3].innerText = eventsList[index].attractions.join(', ');
+
+      newClone.children[4].querySelector('.btn-reservas').href += `?id=${nId}`;
+      newClone.children[4].querySelector('.btn-editar').href += `?id=${nId}`;
+      newClone.children[4].querySelector('.btn-excluir').href += `?id=${nId}`;
+
       tbody.appendChild(newClone);
     });
 

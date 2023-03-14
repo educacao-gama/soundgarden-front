@@ -7,9 +7,7 @@ const deleteEvent = async () => {
   utils.hideElement(form, true);
 
   const getURL = new URL(window.location);
-  console.log(getURL);
   const id = getURL.searchParams.get('id');
-  console.log(id);
 
   const inputNome = document.getElementById('nome');
   const inputBanner = document.getElementById('banner');
@@ -21,11 +19,7 @@ const deleteEvent = async () => {
   const errorDiv = document.querySelector('[data-error]');
 
   try {
-    console.log('entrou');
     const data = await eventsService.eventDetail(id);
-    console.log('saiu');
-
-    console.log(data);
 
     const dateScheduled = utils.dateToLocal(data.scheduled);
 
