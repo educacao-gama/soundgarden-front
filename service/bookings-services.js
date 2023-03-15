@@ -1,4 +1,4 @@
-const bookingEvent = (name, email, eventId) => {
+const bookingEvent = (name, email, tickets, eventId) => {
     return fetch(`https://soundgarden-api.vercel.app/bookings`, {
         method: 'POST',
         headers: {
@@ -7,7 +7,7 @@ const bookingEvent = (name, email, eventId) => {
         body: JSON.stringify({
             owner_name: name,
             owner_email: email,
-            number_tickets: 1,
+            number_tickets: tickets,
             event_id: eventId,
         }),
     }).then((resposta) => {

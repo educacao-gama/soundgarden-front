@@ -28,13 +28,14 @@ form.addEventListener('submit', async (event) => {
     try {
         const name = event.target.querySelector('[data-name]').value;
         const email = event.target.querySelector('[data-email]').value;
+        const tickets = event.target.querySelector('[data-tickets]').value;
         const eventId = event.target.querySelector('[data-event-id]').value;
 
-        if (!name || !email) {
-            return console.log('Nome ou email não preenchidos');
+        if (!name || !email || !tickets) {
+            return console.log('Nome, email ou  não preenchidos');
         }
 
-        await bookingsServices.bookingEvent(name, email, eventId);
+        await bookingsServices.bookingEvent(name, email, tickets, eventId);
 
         modalBookTicket.toggle();
         modalbookTicketSucess.toggle();

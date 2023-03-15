@@ -25,14 +25,29 @@ const renderCards = async (limit) => {
     try {
         const eventsList = await eventsService.eventsList();
 
-        for (let i = 0; i < eventsList.length; i++) {
+        const eventsListOrderByDate = eventsList.sort((a, b) => {
+            console.log(new Date(b.scheduled) - new Date(a.scheduled));
+            return new Date(b.scheduled) - new Date(a.scheduled);
+        });
+
+        const eventsListBiggerToday = eventsListOrderByDate.filter(
+            (dataEvent) => {
+                const today = new Date();
+                console.log(dataEvent.scheduled > today.toISOString());
+                return dataEvent.scheduled > today.toISOString();
+            }
+        );
+
+        const events = limit ? eventsListBiggerToday : eventsListOrderByDate;
+
+        for (let i = 0; i < events.length; i++) {
             eventsDiv.appendChild(
                 createEventCard(
-                    eventsList[i].name,
-                    eventsList[i].scheduled,
-                    eventsList[i].attractions,
-                    eventsList[i].description,
-                    eventsList[i]._id
+                    events[i].name,
+                    events[i].scheduled,
+                    events[i].attractions,
+                    events[i].description,
+                    events[i]._id
                 )
             );
 
@@ -41,7 +56,7 @@ const renderCards = async (limit) => {
             }
         }
 
-        if (limit) {
+        if (limit && eventsListBiggerToday.length > 3) {
             const moreEventsLink = document.createElement('div');
             const content = `<a href="eventos.html" class="btn btn-secondary">ver todos os eventos</a>`;
             moreEventsLink.classList.add('container', 'text-center');

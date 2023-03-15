@@ -34,27 +34,39 @@ const eventCarousel = async () => {
     try {
         const eventsList = await eventsService.eventsList();
 
+        const eventsListOrderByDate = eventsList.sort(function (a, b) {
+            return new Date(b.scheduled) - new Date(a.scheduled);
+        });
+
+        const eventsListBiggerToday = eventsListOrderByDate.filter(
+            (dataEvent) => {
+                const today = new Date();
+                console.log(dataEvent.scheduled > today.toISOString());
+                return dataEvent.scheduled > today.toISOString();
+            }
+        );
+
         const carouselInner = document.querySelector(
             '#event-carousel > .carousel-inner'
         );
 
-        for (let i = 0; i < eventsList.length; i++) {
+        for (let i = 0; i < eventsListBiggerToday.length; i++) {
             const banner = utils.isValidUrl(eventsList[i].poster)
-                ? eventsList[i].poster
+                ? eventsListBiggerToday[i].poster
                 : 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80';
 
             carouselInner.appendChild(
                 createEventCarouselItem(
-                    eventsList[i].name,
-                    eventsList[i].scheduled,
-                    eventsList[i].attractions,
-                    eventsList[i].description,
+                    eventsListBiggerToday[i].name,
+                    eventsListBiggerToday[i].scheduled,
+                    eventsListBiggerToday[i].attractions,
+                    eventsListBiggerToday[i].description,
                     banner,
-                    eventsList[i]._id,
+                    eventsListBiggerToday[i]._id,
                     i === 0 ? true : false
                 )
             );
-            if (i === 5 || i === eventsList.length) {
+            if (i === 5 || i === eventsListBiggerToday.length) {
                 break;
             }
         }
