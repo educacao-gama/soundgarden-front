@@ -1,39 +1,33 @@
 const eventsList = () => {
-  return fetch(`https://soundgarden-api.vercel.app/events`).then((resposta) => {
-    if (resposta.ok) {
-      return resposta.json();
-    }
-    throw new Error('Não foi possível listar os eventos');
-  });
+    return fetch(`https://soundgarden-api.vercel.app/events`).then(
+        (resposta) => {
+            if (resposta.ok) {
+                return resposta.json();
+            }
+            throw new Error('Não foi possível listar os eventos');
+        }
+    );
 };
 
-const createEvent = (
-    name,
-    poster,
-    attractions,
-    description,
-    scheduled,
-    number_tickets
-) => {
+const newEvent = (titulo, banner, atra, desc, date, lotacao) => {
     return fetch(`https://soundgarden-api.vercel.app/events`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            redirect: 'follow',
         },
         body: JSON.stringify({
-            name: name,
-            poster: poster,
-            attractions: attractions,
-            description: description,
-            scheduled: scheduled,
-            number_tickets: number_tickets,
+            name: titulo,
+            poster: banner,
+            attractions: atra,
+            description: desc,
+            scheduled: date,
+            number_tickets: lotacao,
         }),
     }).then((resposta) => {
         if (resposta.ok) {
             return resposta.body;
         }
-        throw new Error('Não foi possível criar o evento');
+        throw new Error('Não foi possível criar evento');
     });
 };
 
@@ -93,7 +87,7 @@ const eventDetail = (id) => {
 
 export const eventsService = {
     eventsList,
-    createEvent,
+    newEvent,
     updateEvent,
     removeEvent,
     eventDetail,
