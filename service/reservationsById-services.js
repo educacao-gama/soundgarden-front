@@ -4,6 +4,8 @@ import { error } from '../js/error.js';
 export default function reservationsById(id, clone, tbody) {
     console.log(id);
     const tableContainer = document.querySelector('[data-tableReserv]');
+    utils.hideElement(tableContainer, true);
+
     async function resevations(id) {
         try {
             const url =
