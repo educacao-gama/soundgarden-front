@@ -2,8 +2,7 @@ import { eventsService } from '../service/events-services.js';
 import editEventsServices from '../service/editEvents-services.js';
 import { error } from '../js/error.js';
 
-const url = new URLSearchParams(document.location.search);
-const id = url.get('id');
+const id = localStorage.getItem('editId');
 let prevName = 0;
 let prevBanner = 0;
 let prevAttraction = 0;
@@ -55,7 +54,11 @@ listEvent().then((events) => {
   });
 
   if (control == 0) {
-    console.log('evento não encontrado, verifique se este evento ainda existe');
+    const erroredit = document.querySelector('[data-editerror]');
+    error.showError(
+      'evento não encontrado, verifique se este evento ainda existe',
+      erroredit,
+    );
   }
 
   function handleSubmit(event) {
