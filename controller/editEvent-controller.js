@@ -72,21 +72,14 @@ listEvent().then((events) => {
 
     let valueAttraction = formElements[2].value;
     valueAttraction = valueAttraction
-      ? valueAttraction.split(',')
+      ? valueAttraction.split(',').map((atraction) => atraction.trim())
       : prevAttraction;
-
     let valueDescription = formElements[3].value;
     valueDescription = valueDescription ? valueDescription : prevDescription;
 
     let valueDate = formElements[4].value;
     if (valueDate) {
       valueDate = valueDate + ':00.000Z';
-      /*
-      const valueArray = valueDate.split(' ');
-      const day = valueArray[0].split('/').reverse().join('-');
-      const hour = valueArray[1] + ':00.000Z';
-      valueDate = day + 'T' + hour;
-      */
     } else {
       valueDate = prevDate;
     }
