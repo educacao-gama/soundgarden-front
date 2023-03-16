@@ -33,7 +33,7 @@ async function listEvent() {
 listEvent().then((events) => {
   const form = document.querySelector('[data-editform]');
 
-  events.forEach((evt, index) => {
+  events.forEach((evt) => {
     if (evt._id == id) {
       prevName = evt.name;
       form.elements[0].setAttribute('placeholder', prevName);
@@ -45,15 +45,9 @@ listEvent().then((events) => {
       form.elements[3].setAttribute('placeholder', prevDescription);
       prevDate = evt.scheduled;
       const newPrevDate = prevDate;
-      const newInitialDate = newPrevDate
-        .replace(/[-]/g, '/')
-        .replace('T', ' ')
-        .slice(0, 16)
-        .split(' ');
-      const newInitialDay = newInitialDate[0].split('/').reverse().join('/');
-      const newInitialHour = newInitialDate[1];
-      const newInitialDate2 = newInitialDay + ' ' + newInitialHour;
-      form.elements[4].setAttribute('placeholder', newInitialDate2);
+      const newInitialDate = newPrevDate.slice(0, 16);
+      form.elements[4].value = newInitialDate;
+
       prevTicket = evt.number_tickets;
       form.elements[5].setAttribute('placeholder', prevTicket);
       control = 1;
@@ -86,10 +80,13 @@ listEvent().then((events) => {
 
     let valueDate = formElements[4].value;
     if (valueDate) {
+      valueDate = valueDate + ':00.000Z';
+      /*
       const valueArray = valueDate.split(' ');
       const day = valueArray[0].split('/').reverse().join('-');
       const hour = valueArray[1] + ':00.000Z';
       valueDate = day + 'T' + hour;
+      */
     } else {
       valueDate = prevDate;
     }
