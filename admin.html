@@ -56,7 +56,7 @@
                     <a href="cadastro-evento.html" class="btn btn-primary">Novo Evento</a>
                 </div>
                 <div class="bd-example">
-                    <table class="table">
+                    <table class="table" data-table-events>
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -81,8 +81,8 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <button class="btn btn-dark btn-reservas verReservas" data-bs-toggle="modal"
-                                        data-bs-target="#eventBookings">ver
+                                    <button type="button" class="btn btn-dark btn-reservas verReservas"
+                                        data-bs-toggle="modal" data-bs-target="#eventBookings">ver
                                         reservas</button>
                                     <a href="editar-evento.html" class="btn btn-secondary btn-editar">editar</a>
                                     <a href="excluir-evento.html" class="btn btn-danger btn-excluir">excluir</a>
@@ -151,7 +151,9 @@
                         </div>
                     </div>
                     <div class="admErrorReservations" style="display: none;"></div>
-                    <div data-modal-body-msg></div>
+                    <div class="hide invisible" data-modal-body-msg>
+                        <p>Esse evento não possui nenhuma reserva</p>
+                    </div>
                     <div class="table-responsive" data-tableReserv>
                         <table class="table table-striped table-hover">
                             <thead>

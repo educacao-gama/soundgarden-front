@@ -2,7 +2,6 @@ import { utils } from '../js/util.js';
 import { error } from '../js/error.js';
 
 export default function reservationsById(id, clone, tbody) {
-    console.log(id);
     const tableContainer = document.querySelector('[data-tableReserv]');
     utils.hideElement(tableContainer, true);
 
@@ -13,7 +12,6 @@ export default function reservationsById(id, clone, tbody) {
             const responseReservations = await fetch(url);
             return await responseReservations.json();
         } catch {
-            console.log('entrou');
             utils.hideElement(tableContainer, true);
             const errorDiv = document.querySelector('.admErrorReservations');
             errorDiv.removeAttribute('style');
@@ -30,8 +28,6 @@ export default function reservationsById(id, clone, tbody) {
     }
 
     resevations(id).then((resevations2) => {
-        console.log(resevations2);
-
         utils.showElement(tableContainer, true);
 
         resevations2.forEach((element, index) => {
@@ -42,7 +38,7 @@ export default function reservationsById(id, clone, tbody) {
             newClone.children[3].innerText = element.number_tickets;
             newClone.children[4].innerText = element._id;
             newClone.removeAttribute('style');
-            console.log(newClone);
+
             tbody.appendChild(newClone);
         });
 
@@ -51,9 +47,7 @@ export default function reservationsById(id, clone, tbody) {
             const modalBodyMsg = document.querySelector(
                 '[data-modal-body-msg]'
             );
-            const p = document.createElement('p');
-            p.innerHTML = 'Esse evento não possui nenhuma reserva';
-            modalBodyMsg.appendChild(p);
+            utils.showElement(modalBodyMsg, true);
         }
     });
 }

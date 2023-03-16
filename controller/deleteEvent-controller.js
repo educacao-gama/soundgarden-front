@@ -6,8 +6,7 @@ const deleteEvent = async () => {
     const form = document.querySelector('[data-form]');
     utils.hideElement(form, true);
 
-    const getURL = new URL(window.location);
-    const id = getURL.searchParams.get('id');
+    const id = localStorage.getItem('EVENT_ID');
 
     const inputNome = document.getElementById('nome');
     const inputBanner = document.getElementById('banner');

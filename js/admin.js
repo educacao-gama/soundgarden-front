@@ -1,4 +1,4 @@
-import { success } from '../js/success.js';
+import { success } from './success.js';
 
 const successMessage = async () => {
     const getURL = new URL(window.location);
@@ -21,4 +21,7 @@ const successMessage = async () => {
         }
     });
 };
-successMessage();
+
+(async () => {
+    await successMessage();
+})();

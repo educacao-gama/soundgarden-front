@@ -1,17 +1,15 @@
+import { utils } from '../js/util.js';
 import reservationsById from '../service/reservationsById-services.js';
-//import closeReservModal from '../js/closeReservModal.js';
 
 export default function showReservations() {
-    const vr = document.getElementsByClassName('verReservas');
-    //const button = document.querySelector('.reservationsModal-close');
-    //const reservModal = document.querySelector('.reservationsModal');
+    const table = document.querySelector('[data-table-events]');
     const tbody = document.querySelector('[data-tableListReserv]');
     const cloneReserv = document.querySelector('[data-cloneReserv]');
+
+    const vr = document.getElementsByClassName('verReservas');
     const vrArray = Array.from(vr);
 
     function handleClick(event) {
-        //reservModal.setAttribute('data-activeReserv', 'true');
-        //closeReservModal(button, reservModal);
         const id = this.parentElement.parentElement.dataset.id;
         reservationsById(id, cloneReserv, tbody);
     }
@@ -20,20 +18,26 @@ export default function showReservations() {
         e.addEventListener('click', handleClick);
     });
 
+    table.addEventListener('click', async (event) => {
+        const tr = event.target.closest('[data-id]');
+        const id = tr.dataset.id;
+
+        const isBtnExcluir = event.target.classList.contains('btn-excluir');
+        const isBtnReserva = event.target.classList.contains('btn-reserva');
+
+        if (isBtnExcluir) {
+            localStorage.setItem('EVENT_ID', id);
+        }
+    });
+
     const modal = document.getElementById('eventBookings');
     modal.addEventListener('hidden.bs.modal', function (event) {
         const reservList = document.querySelectorAll('[data-cloneReserv]');
-        const error = document.querySelector('.admErrorReservations');
-        const loader = document.querySelector('[data-loader-modal]');
+
         reservList.forEach((element) => {
             element.remove();
         });
-        error.style.display = 'none';
-        loader.removeAttribute('style');
-        //element.setAttribute('data-activeReserv', 'false');
-        const modalBodyMsg = document.querySelector(
-            '[data-modal-body-msg] > p'
-        );
-        modalBodyMsg.remove();
+        const modalBodyMsg = document.querySelector('[data-modal-body-msg]');
+        utils.hideElement(modalBodyMsg, true);
     });
 }
