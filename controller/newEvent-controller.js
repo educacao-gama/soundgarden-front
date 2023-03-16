@@ -40,7 +40,8 @@ form.addEventListener('submit', async (evento) => {
             inputLotacao
         );
 
-        window.location.href = 'admin.html?show=success-create';
+        window.localStorage.setItem('SHOW', 'success-remove');
+        window.location.href = 'admin.html';
     } catch (erro) {
         console.log(erro);
         const errorDiv = document.querySelector('[data-error]');

@@ -6,7 +6,7 @@ const deleteEvent = async () => {
     const form = document.querySelector('[data-form]');
     utils.hideElement(form, true);
 
-    const id = localStorage.getItem('EVENT_ID');
+    const id = window.localStorage.getItem('EVENT_ID');
 
     const inputNome = document.getElementById('nome');
     const inputBanner = document.getElementById('banner');
@@ -46,7 +46,8 @@ const deleteEvent = async () => {
         evento.preventDefault();
         try {
             await eventsService.removeEvent(id);
-            window.location.href = 'admin.html?show=success-remove';
+            window.localStorage.setItem('SHOW', 'success-remove');
+            window.location.href = 'admin.html';
         } catch (erro) {
             console.log(erro);
             error.showError(

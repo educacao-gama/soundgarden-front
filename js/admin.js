@@ -1,8 +1,7 @@
 import { success } from './success.js';
 
 const successMessage = async () => {
-    const getURL = new URL(window.location);
-    const show = getURL.searchParams.get('show');
+    const show = localStorage.getItem('SHOW');
 
     window.addEventListener('load', () => {
         if (show === 'success-remove') {
@@ -19,6 +18,8 @@ const successMessage = async () => {
             const successDiv = document.querySelector('[data-success]');
             success.showSuccess('Evento atualizado com sucesso!', successDiv);
         }
+
+        window.localStorage.removeItem('SHOW');
     });
 };
 
