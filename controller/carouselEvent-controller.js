@@ -31,6 +31,8 @@ const createEventCarouselItem = (
 };
 
 const eventCarousel = async () => {
+    const carouselSection = document.getElementById('event-carousel-section');
+
     try {
         const eventsList = await eventsService.eventsList();
 
@@ -41,7 +43,6 @@ const eventCarousel = async () => {
         const eventsListBiggerToday = eventsListOrderByDate.filter(
             (dataEvent) => {
                 const today = new Date();
-                console.log(dataEvent.scheduled > today.toISOString());
                 return dataEvent.scheduled > today.toISOString();
             }
         );
@@ -49,6 +50,11 @@ const eventCarousel = async () => {
         const carouselInner = document.querySelector(
             '#event-carousel > .carousel-inner'
         );
+
+        if (eventsList.length === 0) {
+            console.log('entrou');
+            utils.hideElement(carouselSection, true);
+        }
 
         for (let i = 0; i < eventsListBiggerToday.length; i++) {
             const banner = utils.isValidUrl(eventsList[i].poster)
@@ -69,12 +75,9 @@ const eventCarousel = async () => {
             if (i === 5 || i === eventsListBiggerToday.length) {
                 break;
             }
+            console.log(eventsList);
         }
     } catch (erro) {
-        const carouselSection = document.getElementById(
-            'event-carousel-section'
-        );
-        utils.hideElement(carouselSection, true);
         console.log(erro);
     } finally {
         const loader = document.querySelector('[data-carousel-loader]');
