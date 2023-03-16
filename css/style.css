@@ -219,3 +219,13 @@ footer nav ul li {
     top: 10px;
     width: 60px;
 }
+
+.admin-link {
+    color: #212529;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-link:hover {
+    color: #C2185B;
+}
