@@ -38,6 +38,7 @@ export default function reservationsById(id, clone, tbody) {
             newClone.children[3].innerText = element.number_tickets;
             newClone.children[4].innerText = element._id;
             newClone.removeAttribute('style');
+            newClone.dataset.idreserv = element._id;
 
             tbody.appendChild(newClone);
         });

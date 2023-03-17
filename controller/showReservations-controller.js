@@ -1,3 +1,4 @@
+import { bookingsServices } from '../service/bookings-services.js';
 import { utils } from '../js/util.js';
 import reservationsById from '../service/reservationsById-services.js';
 
@@ -23,14 +24,41 @@ export default function showReservations() {
         const id = tr.dataset.id;
 
         const isBtnExcluir = event.target.classList.contains('btn-excluir');
-        const isBtnReserva = event.target.classList.contains('btn-reserva');
 
         if (isBtnExcluir) {
             localStorage.setItem('EVENT_ID', id);
         }
     });
 
+    const tableReserv = document.querySelector('[data-tablereserv] > table');
+    tableReserv.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        try {
+            const tr = event.target.closest('[data-clonereserv]');
+            const id = tr.dataset.idreserv;
+
+            const isBtnExcluir = event.target.classList.contains(
+                'btn-excluir-reserva'
+            );
+
+            if (isBtnExcluir) {
+                await bookingsServices.removeBooking(id);
+                tr.remove();
+                console.log('delete');
+            }
+        } catch (erro) {
+            // console.log(erro);
+            // error.showError(
+            //     'Ops! Algo de errado aconteceu. Você pode tentar novamente em alguns minutos.',
+            //     errorDiv
+            // );
+            // window.scrollTo(0, 0);
+        }
+    });
+
     const modal = document.getElementById('eventBookings');
+
     modal.addEventListener('hidden.bs.modal', function (event) {
         const reservList = document.querySelectorAll('[data-cloneReserv]');
 

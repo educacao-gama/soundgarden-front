@@ -18,6 +18,18 @@ const bookingEvent = (name, email, tickets, eventId) => {
     });
 };
 
+const removeBooking = (id) => {
+    return fetch(`https://soundgarden-api.vercel.app/bookings/${id}`, {
+        method: 'DELETE',
+        redirect: 'follow',
+    }).then((resposta) => {
+        if (!resposta.ok) {
+            throw new Error('Não foi possível deletar a reserva');
+        }
+    });
+};
+
 export const bookingsServices = {
     bookingEvent,
+    removeBooking,
 };
