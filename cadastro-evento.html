@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sound Gardens - Painel Administrativo</title>
-
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#ea1964">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Sound Garden">
+    <meta name="application-name" content="Sound Garden">
+    <meta name="msapplication-TileColor" content="#b91d47">
+    <meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -17,19 +27,16 @@
         <div class="row">
             <aside class="d-flex flex-column flex-shrink-0 p-3 bg-light col-2">
 
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
+                <a href="./" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                     <span class="fs-4 px-5">
                         <img src="img/Sound-logo.png" alt="Gama Lounge" class="img-responsive">
                     </span>
                 </a>
-                <p class="text-center">painel administrativo</p>
+                <p class="text-center"><a href="./admin.html" class="admin-link">painel administrativo</a></p>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
+                        <a href="./admin.html" class="nav-link active" aria-current="page">
                             Eventos
                         </a>
                     </li>
@@ -54,34 +61,40 @@
 
             </aside>
             <main class="col-9  p-5">
-                <div class="my-5">
+                <div class="my-5" data-error>
                     <h1>Novo evento</h1>
-
                 </div>
                 <div>
                     <!-- - cadastro de evento (nome, atrações, descrição, horário, data, numero de ingressos) -->
-                    <form class="col-6">
+                    <form class="col-6" data-form>
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" aria-describedby="nome">
+                            <input type="text" class="form-control" id="nome" aria-describedby="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="poster" class="form-label">Banner</label>
+                            <input type="text" class="form-control" id="poster" aria-describedby="poster"
+                                placeholder="https://" required>
+                            <small>insira o endereço da imagem</small>
                         </div>
                         <div class="mb-3">
                             <label for="atracoes" class="form-label">Atrações</label>
-                            <input type="text" class="form-control" id="atracoes" aria-describedby="atracoes">
+                            <input type="text" class="form-control" id="atracoes" aria-describedby="atracoes" required>
                             <small>insira o nome dos artistas separados por vírgula</small>
                         </div>
                         <div class="mb-3">
                             <label for="descricao" class="form-label">Descrição</label>
-                            <textarea name="descricao" id="descricao" class="form-control" rows="5"></textarea>
+                            <textarea name="descricao" id="descricao" class="form-control" rows="5" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="data" class="form-label">Data</label>
-                            <input type="datetime" name="data" id="data" class="form-control"
-                                placeholder="00/00/00 00:00">
+                            <input type="datetime-local" name="data" id="data" class="form-control"
+                                min="2023-03-12T15:00" required>
                         </div>
                         <div class="mb-3">
                             <label for="lotacao" class="form-label">Lotação (número de ingressos disponiveis)</label>
-                            <input type="number" class="form-control" id="lotacao" aria-describedby="lotacao">
+                            <input type="number" class="form-control" id="lotacao" aria-describedby="lotacao" value="1"
+                                required>
                         </div>
                         <button type="submit" class="btn btn-primary">enviar</button>
                     </form>
@@ -91,7 +104,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
+    <script type="module" src="./controller/newEvent-controller.js"></script>
 </body>
 
 </html>

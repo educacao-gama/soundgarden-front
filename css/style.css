@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-body{
+
+body {
     font-family: 'Questrial', sans-serif;
 }
 
@@ -7,21 +8,32 @@ body{
     max-width: 100%;
 }
 
-header {
-    position: relative;
-    box-shadow: 0px 5px 4px 0px rgb(63 63 63 / 27%);
-    width: 100%;
-    background-color: #fff;
+.hide {
+    display: none !important;
 }
+
+header {
+    background-color: #fff;
+    box-shadow: 0px 5px 4px 0px rgba(63, 63, 63, 27%);
+    position: relative;
+    width: 100%;
+}
+
+#index header {
+    box-shadow: 0px 5px 4px 0px rgba(63, 63, 63, 50%);
+    z-index: 2;
+}
+
 aside {
     min-height: 100vh;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     background-color: #C2185B;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #C2185B;
     border-color: #C2185B;
 }
@@ -30,21 +42,190 @@ main.login {
     width: 400px;
 }
 
-section.full{
-    width: 100%;
+section.full {
     min-height: 80vh;
     padding: 50px 0;
+    width: 100%;
+}
+
+#event-carousel-section {
+    box-shadow: inset 0px 5px 4px 0px rgb(63 63 63 / 60%);
+    padding-top: 0;
+}
+
+.carousel-item {
+    background-color: #000;
+}
+
+.carousel-img {
+    height: calc(100vh - 159px);
+    object-fit: cover;
+    opacity: 0.5;
+    width: 100vw;
+}
+
+.table tr {
+    opacity: 1;
+    transition: opacity 1s, border-bottom-color 1s;
+    vertical-align: middle;
+}
+
+.table tr.fade-out {
+    border-bottom-color: transparent;
+    opacity: 0;
+}
+
+.table tr>td:last-of-type {
+    position: relative;
+    width: 276px;
+}
+
+.btn-delete {
+    left: 12.25rem;
+    position: absolute;
+    right: 0.5rem;
+    transition: background-color 1s ease-in-out, border-color 1s ease-in-out, box-shadow 1s ease-in-out, color 1s ease-in-out, left 1s ease-in-out;
+}
+
+.btn.btn-delete.btn-warning {
+    animation: pulse 3s infinite, color-warning 1s forwards;
+    animation-delay: 1s;
+    box-shadow: none;
+    color: #ffc107;
+    left: 0.45rem;
+    position: absolute;
+    right: 0.5rem;
+    text-transform: uppercase;
+    transition: background-color 1s ease-in-out, border-color 1s ease-in-out, box-shadow 1s ease-in-out, color 1s ease-in-out, left 1s ease-in-out;
+}
+
+.btn.btn-delete.btn-warning.disabled,
+.btn.btn-delete.btn-warning:disabled {
+    background-color: #FFD677;
+    opacity: 1;
+    transition: background-color 1s ease-in-out, border-color 1s ease-in-out, box-shadow 1s ease-in-out, color 1s ease-in-out, left 1s ease-in-out;
+}
+
+@keyframes color-warning {
+    0% {
+        color: #ffc107;
+    }
+
+    100% {
+        color: #000;
+    }
+}
+
+@keyframes color-danger {
+    0% {
+        color: #bb2d3b;
+    }
+
+    100% {
+        color: #FFF;
+    }
+}
+
+@keyframes color-label {
+    0% {
+        color: #ffc107;
+    }
+
+    100% {
+        color: #000;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        filter: drop-shadow(0px 0px 0px #FFC107);
+    }
+
+    50% {
+        filter: drop-shadow(0px 0px 20px #FFC107);
+    }
+
+    100% {
+        filter: drop-shadow(0px 0px 0px #FFC107);
+    }
 }
 
 article.evento {
     width: 350px;
 }
 
-footer nav ul{
-    list-style: none;
+footer nav ul {
     display: flex;
+    list-style: none;
 }
 
-footer nav ul li  {
+footer nav ul li {
     padding: 10px;
+}
+
+.admError span {
+    background-color: rgba(255, 0, 0, 0.6);
+    border-radius: 6px;
+    color: white;
+    display: block;
+    text-align: center;
+}
+
+
+
+[data-activeReserv="false"] {
+    display: none;
+}
+
+[data-activeReserv="true"] {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    /**display: none;**/
+}
+
+.reservationsModal .table {
+    background-color: white;
+    margin-bottom: 0px;
+}
+
+[data-cloneReserv] td,
+[data-cloneReserv] th {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.tableReserv {
+    max-height: 80vh;
+    overflow: scroll;
+}
+
+.reservationsModal-close {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px black;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 900;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    width: 60px;
+}
+
+.admin-link {
+    color: #212529;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-link:hover {
+    color: #C2185B;
 }
