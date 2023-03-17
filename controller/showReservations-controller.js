@@ -45,15 +45,9 @@ export default function showReservations() {
             if (isBtnExcluir) {
                 await bookingsServices.removeBooking(id);
                 tr.remove();
-                console.log('delete');
             }
         } catch (erro) {
-            // console.log(erro);
-            // error.showError(
-            //     'Ops! Algo de errado aconteceu. Você pode tentar novamente em alguns minutos.',
-            //     errorDiv
-            // );
-            // window.scrollTo(0, 0);
+            console.log(erro);
         }
     });
 

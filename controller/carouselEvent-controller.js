@@ -52,7 +52,6 @@ const eventCarousel = async () => {
         );
 
         if (eventsList.length === 0) {
-            console.log('entrou');
             utils.hideElement(carouselSection, true);
         }
 
@@ -75,7 +74,6 @@ const eventCarousel = async () => {
             if (i === 5 || i === eventsListBiggerToday.length) {
                 break;
             }
-            console.log(eventsList);
         }
     } catch (erro) {
         console.log(erro);
